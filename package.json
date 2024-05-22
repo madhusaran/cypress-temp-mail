@@ -4,7 +4,7 @@
   "description": "Provides temporary email and sms for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
-    "test": "test"
+    "test": "npx cypress run"
   },
   "author": "Madhan Raj S",
   "license": "ISC",
@@ -13,9 +13,18 @@
     "mailparser": "^3.6.4",
     "nodemailer": "^6.9.13"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madhusaran/cypress-temp-mail-sms"
+  },
+  "keywords": [
+    "cypress-plugin",
+    "temp mail",
+    "temp sms",
+    "cypress plugin"
+  ],
   "dependencies": {
     "imap-simple": "^1.6.3",
-    "cypress": "^13.9.0",
     "mailparser": "^3.6.4",
     "nodemailer": "^6.9.13"
   }

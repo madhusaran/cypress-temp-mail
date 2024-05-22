@@ -22,7 +22,7 @@ Cypress.Commands.add('createTempMail', { prevSubject: 'optional' }, () => {
 Cypress.Commands.add('getLastEmail', (account = tempMailAccount) => {
 
     console.log('node ./src/lastmail.mjs ' + account.email + ' ' + account.password)
-    return cy.exec('node ./src/lastmail.mjs ' + account.email + ' ' + account.password, { failOnNonZeroExit: false }).then((m) => {
+    return cy.exec('node ./src/lastmail.js ' + account.email + ' ' + account.password, { failOnNonZeroExit: false }).then((m) => {
 
         if (m.code != 0) {
             console.log(m.stderr)

@@ -1,7 +1,7 @@
-import * as imaps from 'imap-simple'
-import { simpleParser } from "mailparser";
+const imaps = require('imap-simple')
+const simpleParser = require("mailparser").simpleParser
 
-export async function getLastUserEmail() {
+async function getLastUserEmail() {
   const emailConfig = {
     imap: {
       user: process.argv[2],
