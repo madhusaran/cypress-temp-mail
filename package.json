@@ -1,6 +1,6 @@
 {
   "name": "cypress-temp-mail",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Provides temporary email and sms for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {

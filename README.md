@@ -12,7 +12,7 @@ TempMail-Cypress is a lightweight npm library designed to generate temporary ema
 Install cypress-temp-mail-sms using npm:
 
 ```bash 
-npm install cypress-temp-mail-sms --save-dev
+npm install cypress-temp-mail --save-dev
 ```
 
 ## Usage
