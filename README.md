@@ -54,6 +54,4 @@ Contributions are welcome! Please read our Contributing Guide for details on our
 
 ### Owner
 
-[https://rajmadhan009.wixsite.com/madhanselvaraj] ( Mr. Madhan Raj )
-
 [www.linkedin.com/in/madhanrajselvaraj] ( Linkedin )
