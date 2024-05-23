@@ -1,4 +1,4 @@
-# cypress-temp-mail-sms
+# cypress-temp-mail
 TempMail-Cypress is a lightweight npm library designed to generate temporary email addresses for end-to-end testing with Cypress. It streamlines the process of testing email-related functionalities in your applications.
 
 ## Features
