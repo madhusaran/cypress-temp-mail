@@ -1,1 +1,2 @@
-import './email.js'
+require('../src/email')
+require('../src/lastmail')

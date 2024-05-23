@@ -30,13 +30,6 @@ cy.createTempMail()  //Retuens you a temp email generated using
 ```javascript
 cy.getLastEmail()  //Returns below object for the latest created email . 
 ```
-
-
-##To get the mail for specific account
-```javascript
-cy.getLastEmail({email: 'abc@ethereal.com', password: 'abc@123!'}) 
-
-```
 ===
 
 ```javascript
@@ -47,6 +40,12 @@ cy.getLastEmail({email: 'abc@ethereal.com', password: 'abc@123!'})
     html: //latest mail body as html,
     inboxMailCount: //mailbox count
 }
+
+```
+
+## To get the mail for specific account
+```javascript
+cy.getLastEmail({email: 'abc@ethereal.com', password: 'abc@123!'}) 
 
 ```
 

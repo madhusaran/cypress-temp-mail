@@ -1,6 +1,6 @@
 {
-  "name": "cypress-temp-mail-sms",
-  "version": "1.0.1",
+  "name": "cypress-temp-mail",
+  "version": "1.0.5",
   "description": "Provides temporary email and sms for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "cypress-plugin",
     "temp mail",
     "temp sms",
-    "cypress plugin"
+    "cypress plugin",
+    "Cypress",
+    "cypress"
   ],
   "dependencies": {
     "imap-simple": "^1.6.3",

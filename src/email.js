@@ -1,9 +1,5 @@
 var tempMailAccount
 
-//  import imaps from 'imap-simple'
-// //var simpleParser = 
-// import { simpleParser } from 'mailparser'
-
 Cypress.Commands.add('createTempMail', { prevSubject: 'optional' }, () => {
     return cy.exec('node ./src/mailer.js', { failOnNonZeroExit: true }).then((m) => {
         
@@ -21,7 +17,7 @@ Cypress.Commands.add('createTempMail', { prevSubject: 'optional' }, () => {
 
 Cypress.Commands.add('getLastEmail', (account = tempMailAccount) => {
 
-    console.log('node ./src/lastmail.mjs ' + account.email + ' ' + account.password)
+    console.log('node ./src/lastmail.js ' + account.email + ' ' + account.password)
     return cy.exec('node ./src/lastmail.js ' + account.email + ' ' + account.password, { failOnNonZeroExit: false }).then((m) => {
 
         if (m.code != 0) {

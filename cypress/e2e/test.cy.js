@@ -1,5 +1,5 @@
 /// <reference types="Cypress"/>
-
+/// <reference path="../../src/index.d.ts" />
 import '../../src/email'
 describe(' cypress-temp-mail-sms ', () => {
     it('=== Validate the temp mail custom commands ===', () => {
