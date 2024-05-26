@@ -1,7 +1,9 @@
 var tempMailAccount
 const path = require('path');
+
 Cypress.Commands.add('createTempMail', { prevSubject: 'optional' }, () => {
-    return cy.exec('node '+ process.cwd() + '/node_modules/cypress-temp-mail/src/mailer.js', { failOnNonZeroExit: true }).then((m) => {
+
+    return cy.exec('node .'+ path.resolve(__dirname , 'mailer.js'), { failOnNonZeroExit: true }).then((m) => {
         
         if (m.code != 0) {
             console.log(m.stderr)
@@ -15,11 +17,10 @@ Cypress.Commands.add('createTempMail', { prevSubject: 'optional' }, () => {
     })
 })
 
-
 Cypress.Commands.add('getLastEmail', (account = tempMailAccount) => {
 
     console.log('node ./src/lastmail.js ' + account.email + ' ' + account.password)
-    return cy.exec('node '+ process.cwd() + '/node_modules/cypress-temp-mail/src/lastmail.js ' + account.email + ' ' + account.password, { failOnNonZeroExit: false }).then((m) => {
+    return cy.exec('node .'+ path.resolve(__dirname ,'lastmail.js ') + account.email + ' ' + account.password, { failOnNonZeroExit: false }).then((m) => {
 
         if (m.code != 0) {
             console.log(m.stderr)

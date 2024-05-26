@@ -1,6 +1,6 @@
 {
   "name": "cypress-temp-mail",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "Provides temporary email and sms for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.9.0",
+    "cypress-temp-mail": "^1.0.9",
     "mailparser": "^3.7.1",
     "nodemailer": "^6.9.13",
     "path": "^0.12.7"

@@ -20,6 +20,9 @@ declare namespace Cypress {
          * @returns 
          * Chainable<{ subject: any; text: any; html: any; inboxMailCount: number }>
          */
-        getLastEmail(): Chainable<{ subject: string; text: string; html: any; inboxMailCount: any }>
+        getLastEmail({
+            email,
+            password
+        }): Chainable<{ subject: string; text: string; html: any; inboxMailCount: any }>
     }
 }
