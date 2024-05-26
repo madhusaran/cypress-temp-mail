@@ -1,17 +1,19 @@
 {
   "name": "cypress-temp-mail",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Provides temporary email and sms for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
     "test": "npx cypress run"
   },
-  "author": "Madhan Raj S",
+  "types": "src/index.d.ts",
+  "author": "Madhan Raj <madhan6077@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.9.0",
-    "mailparser": "^3.6.4",
-    "nodemailer": "^6.9.13"
+    "mailparser": "^3.7.1",
+    "nodemailer": "^6.9.13",
+    "path": "^0.12.7"
   },
   "repository": {
     "type": "git",
@@ -26,8 +28,8 @@
     "cypress"
   ],
   "dependencies": {
-    "imap-simple": "^1.6.3",
-    "mailparser": "^3.6.4",
+    "imap-simple": "^5.1.0",
+    "mailparser": "^3.7.1",
     "nodemailer": "^6.9.13"
   }
 }
