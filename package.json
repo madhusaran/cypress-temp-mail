@@ -8,7 +8,7 @@
   },
   "types": "src/index.d.ts",
   "author": "Madhan Raj <madhan6077@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "cypress": "^13.9.0",
     "cypress-temp-mail": "^1.0.9",
