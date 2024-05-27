@@ -1,7 +1,8 @@
-# cypress-temp-mail
-TempMail-Cypress is a lightweight npm library designed to generate temporary email addresses for end-to-end testing with Cypress. It streamlines the process of testing email-related functionalities in your applications.
 
-## Features
+# cypress-temp-mail ✔
+cypress-temp-mail is a lightweight npm library designed to generate temporary email addresses for end-to-end testing with Cypress . It streamlines the process of testing email-related functionalities in your applications.
+
+## Features ✔
 
 - **Quick Setup**: Easily integrate with your Cypress tests.
 - **Disposable Emails**: Generate temporary emails for testing sign-ups, password resets, and more.
@@ -9,15 +10,19 @@ TempMail-Cypress is a lightweight npm library designed to generate temporary ema
 
 ## Installation
 
-Install cypress-temp-mail-sms using npm:
+Install `cypress-temp-mail` using npm:
 
 ```bash 
 npm install cypress-temp-mail --save-dev
 ```
 
 ## Usage
-Import cypress-temp-mail-sms in your Cypress ``commands.js`` file:
-
+===
+```javascript
+import 'cypress-temp-mail'
+```
+in your Cypress project  - ``cypress/support/commands.js`` file
+===
 ## Generate a new temporary email:
 
 ```javascript
@@ -44,14 +49,13 @@ cy.getLastEmail()  //Returns below object for the latest created email .
 ```
 
 ## To get the mail for specific account
+
 ```javascript
 cy.getLastEmail({email: 'abc@ethereal.com', password: 'abc@123!'}) 
 
 ```
 
 ### Contributing
-Contributions are welcome! Please read our Contributing Guide for details on our code of conduct, and the process for submitting pull requests.
+Contributions are welcome! 🙏
 
-### Owner
-
-[www.linkedin.com/in/madhanrajselvaraj] ( Linkedin )
+#HappyTesting

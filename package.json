@@ -1,6 +1,6 @@
 {
   "name": "cypress-temp-mail",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Provides temporary email and sms for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "types": "src/index.d.ts",
   "author": "Madhan Raj <madhan6077@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "cypress": "^13.9.0",
     "cypress-temp-mail": "^1.0.9",
