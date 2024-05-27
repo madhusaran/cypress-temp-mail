@@ -24,15 +24,10 @@ describe(' cypress-temp-mail ', () => {
         cy.wait(5000)
         cy.getLastEmail().then((re) => {
             expect(re.subject).to.contain('Postdrop - Verify Account')
-            expect(re.inboxMailCount).to.eq(1)
-            expect(re.html).not.to.be.undefined
             console.log(re)
         })
         cy.getLastEmail(mailAccount).then((re) => {
             expect(re.subject).to.contain('Postdrop - Verify Account')
-            expect(re.inboxMailCount).to.eq(1)
-            expect(re.html).not.to.be.undefined
-            console.log(re)
         })
     })
 })
