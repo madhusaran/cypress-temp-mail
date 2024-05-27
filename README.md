@@ -1,3 +1,4 @@
+[![](https://github.com/madhusaran/cypress-temp-mail/workflows/cypress-temp-mail/badge.svg)](https://github.com/madhusaran/cypress-temp-mail/actions)
 
 # cypress-temp-mail ✔
 cypress-temp-mail is a lightweight npm library designed to generate temporary email addresses for end-to-end testing with Cypress . It streamlines the process of testing email-related functionalities in your applications.
@@ -21,7 +22,7 @@ npm install cypress-temp-mail --save-dev
 ```javascript
 import 'cypress-temp-mail'
 ```
-in your Cypress project  - ``cypress/support/commands.js`` file
+in your Cypress project  - `cypress/support/commands.js` file
 ===
 ## Generate a new temporary email:
 
