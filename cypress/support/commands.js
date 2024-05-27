@@ -1,1 +1,1 @@
-require('cypress-temp-mail')
+import '../../src/index.js'
