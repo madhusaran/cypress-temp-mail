@@ -29,32 +29,20 @@ in your Cypress project  - `cypress/support/commands.js` file
 ## Generate a new temporary email:
 
 ```javascript
-cy.createTempMail()  //Retuens you a temp email generated using
+cy.createTempMail(mailingAddressLabel)  //Retuens you a temp email generated using provided mailingAddressLabel
 
+//Example: cy.createTempMail("tesEmail")  => Returns tesEmail@1secmail.com
 ``` 
 
 ## Check the inbox:
 
 ```javascript
-cy.getLastEmail()  //Returns below object for the latest created email . 
-```
-===
-
-```javascript
-
-{
-    subject: //latest mail subject,
-    text: //latest mail body as text,
-    html: //latest mail body as html,
-    inboxMailCount: //mailbox count
-}
+cy.getMailbox()   //Returns below object for the latest created email . 
 
 ```
-
-## To get the mail for specific account
-
 ```javascript
-cy.getLastEmail({email: 'abc@ethereal.com', password: 'abc@123!'}) 
+
+{ address: string, messageCount: number, messages: Message[] }
 
 ```
 

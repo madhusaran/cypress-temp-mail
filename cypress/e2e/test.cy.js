@@ -1,19 +1,17 @@
-/// <reference types="Cypress"/>
 /// <reference path="../../src/index.d.ts" />
 
 describe(' cypress-temp-mail ', () => {
     var mailAccount
     it('=== Validate the temp mail custom commands ===', () => {
         cy.visit('https://app.postdrop.io/signup')
-        cy.createTempMail().then((res) => {
+        cy.createTempMail("newman" + new Date().getTime().toString().slice(3,6) ).then((res) => {
             console.log('******************************************')
             console.log(res)
             mailAccount = res
             console.log('******************************************')
-            expect(res.email).to.exist
-            expect(res.password).to.exist
-            cy.get('#email').type(res.email)
-            cy.get('#password').type(res.email)
+            expect(res.address).to.exist
+            cy.get('#email').type(res.address)
+            cy.get('#password').type("Pass@123")
 
             cy.get('#name').type('testMMMM')
             cy.get('#company').type('testMMMMc')
@@ -21,13 +19,11 @@ describe(' cypress-temp-mail ', () => {
 
             cy.get('button[type="submit"]').eq(1).should('be.visible').click()
         })
-        cy.wait(5000)
-        cy.getLastEmail().then((re) => {
-            expect(re.subject).to.contain('Postdrop - Verify Account')
+        cy.wait(10000)
+        cy.getMailbox().then((re) => {
+            console.log(re.messages[0].subject)
+            expect(re.messages[0].subject).to.contain('Postdrop - Verify Account')
             console.log(re)
-        })
-        cy.getLastEmail(mailAccount).then((re) => {
-            expect(re.subject).to.contain('Postdrop - Verify Account')
         })
     })
 })

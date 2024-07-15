@@ -1,37 +1,16 @@
 var tempMailAccount
 const path = require('path');
+const TempMail = require("node-temp-mail");
+let address
 
-Cypress.Commands.add('createTempMail', { prevSubject: 'optional' }, () => {
-
-    return cy.exec('node .'+ path.resolve(__dirname , 'mailer.js'), { failOnNonZeroExit: true }).then((m) => {
-        
-        if (m.code != 0) {
-            console.log(m.stderr)
-        }
-        let userEmail = {
-            email: JSON.parse(m.stdout).email,
-            password: JSON.parse(m.stdout).password
-        }
-        tempMailAccount = userEmail
-        return userEmail
-    })
+Cypress.Commands.add('createTempMail', (mailingAddressLabel) => {
+    // Let's create an address object so it can be accessed by the module.
+    console.log(mailingAddressLabel)
+    address = new TempMail(mailingAddressLabel);
+    console.log(address)
+    return address.getAddress()
 })
 
-Cypress.Commands.add('getLastEmail', (account = tempMailAccount) => {
-
-    console.log('node ./src/lastmail.js ' + account.email + ' ' + account.password)
-    return cy.exec('node .'+ path.resolve(__dirname ,'lastmail.js ') + account.email + ' ' + account.password, { failOnNonZeroExit: false }).then((m) => {
-
-        if (m.code != 0) {
-            console.log(m.stderr)
-        }
-        var stdOu = JSON.parse(m.stdout)
-        var rerul = {
-            subject: stdOu.subject,
-            text: stdOu.text,
-            html: stdOu.html,
-            inboxMailCount: stdOu.inboxMailCount,
-        }
-        return rerul
-    })
+Cypress.Commands.add('getMailbox', () => {
+    return address.fetchEmails();
 })
