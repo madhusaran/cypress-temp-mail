@@ -7,10 +7,10 @@ describe(' cypress-temp-mail ', () => {
         cy.createTempMail("newma" + Math.random().toString().slice(3,5) + new Date().getTime().toString().slice(3,6) ).then((res) => {
             console.log('******************************************')
             console.log(res)
-            mailAccount = res
+            mailAccount = res.address
             console.log('******************************************')
-            expect(res).to.exist
-            cy.get('#email').type(res)
+            expect(res.address).to.exist
+            cy.get('#email').type(res.address)
             cy.get('#password').type("Pass@123")
 
             cy.get('#name').type('testMMMM')
@@ -23,7 +23,7 @@ describe(' cypress-temp-mail ', () => {
         cy.getMailbox().then((re) => {
             console.log(re.messages[0].subject)
             expect(re.messages[0].subject).to.contain('Postdrop - Verify Account')
-            console.log(re)
+            console.log(re.messages[0].html)
         })
     })
 })

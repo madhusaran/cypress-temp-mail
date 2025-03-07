@@ -1,6 +1,6 @@
 {
   "name": "cypress-temp-mail",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Provides temporary email for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
@@ -17,10 +17,19 @@
     "url": "https://github.com/madhusaran/cypress-temp-mail"
   },
   "keywords": [
+    "cypress-temp-mail",
+    "node-temp-mail",
     "cypress-plugin",
-    "temp mail",
-    "temporary mail",
-    "cypress plugin",
+    "tempmail",
+    "temporary",
+    "mail",
+    "email",
+    "temp",
+    "email",
+    "temporary",
+    "email",
+    "node",
+    "tempemail",
     "Cypress",
     "cypress",
     "cypress temp mail",

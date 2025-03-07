@@ -1,5 +1,11 @@
 // load type definitions that come with Cypress module
 /// <reference types="cypress" />
+
+interface Message {
+    subject: string,
+    html: string
+}
+
 declare namespace Cypress {
     interface Chainable {
         /**
@@ -7,15 +13,16 @@ declare namespace Cypress {
          * @example
          * cy.createTempMail() 
          */
-        createTempMail(mailingAddressLabel: string): Chainable<string>
+        createTempMail(mailingAddressLabel: string): Chainable<{
+            address: string
+        }>
 
         /**
          * retrives the last received mail from the created mail
          * @example
          * cy.getMailbox() 
-         * cy.getMailbox({ address: string, messageCount: number, messages: Message[] })
          * @returns 
-         * Chainable<{ subject: any; text: any; html: any; inboxMailCount: number }>
+         * Chainable<{ address: string, messageCount: number, messages: Message[] }>
          */
         getMailbox(): Chainable<{ address: string, messageCount: number, messages: Message[] }>
     }

@@ -1,12 +1,10 @@
-var tempMailAccount
-const path = require('path');
 const Mailjs = require("@cemalgnlts/mailjs");
 let address
 const mailjs = new Mailjs();
 
 Cypress.Commands.add('createTempMail', (mailingAddressLabel) => {
     console.log(mailingAddressLabel);
-    
+
     return mailjs.getDomains().then((domains) => {
         if (!domains.data.length) {
             throw new Error("No domains available");
@@ -20,7 +18,7 @@ Cypress.Commands.add('createTempMail', (mailingAddressLabel) => {
         return mailjs.register(address, "Pass@123").then((register) => {
             if (register.status) {
                 console.log(`Registered email: ${address}, ID: ${register.data.id}`);
-                return address;
+                return { address: address };
             } else {
                 throw new Error("Email registration failed");
             }
