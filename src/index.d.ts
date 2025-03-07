@@ -7,9 +7,7 @@ declare namespace Cypress {
          * @example
          * cy.createTempMail() 
          */
-        createTempMail(mailingAddressLabel: string): Chainable<{
-            address: string
-        }>
+        createTempMail(mailingAddressLabel: string): Chainable<string>
 
         /**
          * retrives the last received mail from the created mail

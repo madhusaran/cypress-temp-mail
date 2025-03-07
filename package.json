@@ -1,6 +1,6 @@
 {
   "name": "cypress-temp-mail",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Provides temporary email for E2E testing with Cypress",
   "main": "src/index.js",
   "scripts": {
@@ -10,8 +10,7 @@
   "author": "Madhan Raj <madhan6077@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.9.0",
-    "node-temp-mail": "^2.0.2"
+    "cypress": "^13.9.0"
   },
   "repository": {
     "type": "git",
@@ -28,6 +27,6 @@
     "cypress temp email"
   ],
   "dependencies": {
-    "node-temp-mail": "^2.0.2"
+    "@cemalgnlts/mailjs": "^3.0.1"
   }
 }
