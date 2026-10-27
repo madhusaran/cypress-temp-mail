@@ -1,41 +1,43 @@
 {
   "name": "cypress-temp-mail",
-  "version": "3.0.1",
-  "description": "Provides temporary email for E2E testing with Cypress",
+  "version": "3.1.0",
+  "description": "Provides temporary email inboxes for E2E testing with Cypress",
   "main": "src/index.js",
-  "scripts": {
-    "test": "npx cypress run"
-  },
   "types": "src/index.d.ts",
-  "author": "Madhan Raj <madhan6077@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "cypress": "^13.9.0"
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "cypress run"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/madhusaran/cypress-temp-mail"
+    "url": "git+https://github.com/madhusaran/cypress-temp-mail.git"
   },
+  "bugs": {
+    "url": "https://github.com/madhusaran/cypress-temp-mail/issues"
+  },
+  "homepage": "https://github.com/madhusaran/cypress-temp-mail#readme",
   "keywords": [
-    "cypress-temp-mail",
-    "node-temp-mail",
-    "cypress-plugin",
-    "tempmail",
-    "temporary",
-    "mail",
-    "email",
-    "temp",
-    "email",
-    "temporary",
-    "email",
-    "node",
-    "tempemail",
-    "Cypress",
     "cypress",
+    "cypress-plugin",
+    "cypress-temp-mail",
     "cypress temp mail",
-    "cypress temp email"
+    "cypress temp email",
+    "temp mail",
+    "tempmail",
+    "temporary email",
+    "disposable email",
+    "email testing",
+    "e2e",
+    "mail.tm"
   ],
-  "dependencies": {
-    "@cemalgnlts/mailjs": "^3.0.1"
+  "author": "Madhan Raj <madhan6077@gmail.com>",
+  "license": "ISC",
+  "peerDependencies": {
+    "cypress": ">=10"
+  },
+  "devDependencies": {
+    "cypress": "^16.2.0"
   }
 }

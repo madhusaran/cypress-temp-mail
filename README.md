@@ -10,7 +10,7 @@
 
 
 # cypress-temp-mail ✔
-cypress-temp-mail is a lightweight npm library designed to generate temporary email addresses for end-to-end testing with Cypress . It streamlines the process of testing email-related functionalities in your applications.
+cypress-temp-mail is a lightweight npm library designed to generate temporary email addresses for end-to-end testing with Cypress. It streamlines the process of testing email-related functionalities in your applications.
 
 ## Features ✔
 
@@ -20,7 +20,8 @@ cypress-temp-mail is a lightweight npm library designed to generate temporary em
 ## Why Choose `cypress-temp-mail`?
 
 - **Fast Setup**: Quickly add disposable email support to your Cypress tests.
-- **No External Dependencies**: You don’t need to rely on any third-party services for email generation.
+- **No Runtime Dependencies**: Inboxes come from the free [mail.tm](https://mail.tm) API through `cy.request`, with no account or API key needed.
+- **Waits for Mail**: `cy.getMailbox({ minMessages: 1 })` polls until the mail arrives, no fixed `cy.wait` needed.
 - **Flexible**: Supports multiple use cases like sign-up, password reset, and email validation testing.
 
 ## Installation
@@ -33,31 +34,76 @@ npm install cypress-temp-mail --save-dev
 
 ## Usage
 
+Add the import to your Cypress project's `cypress/support/e2e.js` (or `commands.js`) file:
+
 ```javascript
 import 'cypress-temp-mail'
 ```
-add the above statemrent to your Cypress project (`cypress/support/e2e.js` )
+
+For TypeScript projects, add `"cypress-temp-mail"` to `compilerOptions.types` in your `tsconfig.json`.
 
 ## Generate a new temporary email:
 
 ```javascript
-cy.createTempMail(mailingAddressLabel)  //Retuens you a temp email generated using provided mailingAddressLabel
+cy.createTempMail(mailingAddressLabel)  // Creates a new inbox and yields { address }
 
-//Example: cy.createTempMail("tesEmail")  => Returns tesEmail@1secmail.com
-``` 
+// Example
+cy.createTempMail('signup' + Date.now()).then(({ address }) => {
+  cy.get('#email').type(address)   // e.g. signup1730000000000@<mail.tm domain>
+})
+```
+
+The label must be unique (an address cannot be created twice), so add a timestamp or random suffix. Omit it to get a random address.
 
 ## Check the inbox:
 
 ```javascript
-cy.getMailbox()   //Returns below object for the latest created email . 
-
+cy.getMailbox()                                   // mails of the latest created inbox, newest first
+cy.getMailbox({ minMessages: 1, timeout: 60000 }) // wait until at least one mail has arrived
+cy.getMailbox({ address })                        // another inbox created earlier in the same spec
 ```
+
+Options: `address` (default: latest inbox), `minMessages` (default `0`, no waiting), `timeout` (default `30000` ms), `interval` between polls (default `3000` ms).
+
+Yields:
+
 ```javascript
-
-{ address: string, messageCount: number, messages: Message[] }
-
+{
+  address: string,
+  messageCount: number,
+  messages: { from: string, timestamp: string, subject: string, message: string, html: string }[]
+}
 ```
+
+Example:
+
+```javascript
+cy.getMailbox({ minMessages: 1 }).then(({ messages }) => {
+  expect(messages[0].subject).to.contain('Verify your account')
+})
+```
+
+## Limits
+
+Inboxes come from the free [mail.tm](https://mail.tm) service, so its limits apply:
+
+- **No fixed number of inboxes**: any unique label gives a new address.
+- **Rate limit per IP**: mail.tm allows about 30 requests a minute. `cy.createTempMail()` makes 3 requests, and `cy.getMailbox()` makes 1 per check plus 1 per mail read. In practice, expect around **5–10 new inboxes a minute**.
+- **Automatic retry**: rate-limited requests (HTTP 429) wait and retry up to 5 times, so a busy suite slows down rather than failing.
+- **Shared CI runners**: machines that share an outgoing IP share the limit.
+
+Tips: create one inbox per test (not per assertion), and keep the polling `interval` at 3000 ms or more.
+
 ## Changelog
+
+### [3.1.0] - 2026-10-28
+- `getMailbox` can wait for mail: `minMessages`, `timeout` and `interval` options
+- `getMailbox({ address })` reads any inbox created in the same spec
+- Each inbox gets its own random password (3.0.x used a shared, guessable one)
+- Messages include `from`, `timestamp`, `message` (text) and `html` (now a string)
+- Rate-limited (HTTP 429) mail.tm requests are retried
+- Removed the `@cemalgnlts/mailjs` dependency; `cypress` is now a peer dependency
+- `createTempMail()` without a label generates a random address
 
 ### [3.0.1] - 2025-03-12
 - Updated the temp email provider engine
